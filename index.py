@@ -4,6 +4,7 @@ import tensorflow as tf, sys
  
 graph_path = 'output_graph.pb'
 labels_path = 'output_labels.txt'
+minimum_score = 0.90
 
 @route('/hello')
 def hello():
@@ -39,7 +40,7 @@ def do_upload():
     top_predict = ""
     for res in scores:
 
-        if res['score'] >= (90/100):
+        if res['score'] >= minimum_score:
             top_predict = res['label']
 
         list_scores += res['label']+" = "+str(res['score'])+"<br>"
