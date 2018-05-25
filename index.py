@@ -45,11 +45,11 @@ def do_upload():
         list_scores += res['label']+" = "+str(res['score'])+"<br>"
 
     if len(top_predict) > 0 :
-        top_predict = "INI ADALAH GAMBAR BUNGA "+top_predict.upper()
+        top_predict = "<h2 style='color:green'>INI ADALAH GAMBAR BUNGA "+top_predict.upper()+"</h2>"
     else:
-        top_predict = "INI BUKAN GAMBAR BUNGA"
+        top_predict = "<h2 style='color:red'>INI BUKAN GAMBAR BUNGA </h2>"
 
-    return "<br><br><center><p><img src='/static/{}' width='200px'></p><p><h2> {} </h2></p><p>{}</p>".format(new_name,top_predict,list_scores)    
+    return "<body style='font-size: 35px;'><br><br><center><p><img src='/static/{}' width='300px'></p>{}<p>{}</p></body>".format(new_name,top_predict,list_scores)    
 
 
 @route('/static/<filename>')
