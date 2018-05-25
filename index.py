@@ -10,7 +10,7 @@ def hello():
     return "Hello World!"
 
 
-@get('/image') # or @route('/login')
+@get('/') # or @route('/login')
 def login():
     return '''
         <center>
@@ -35,21 +35,21 @@ def do_upload():
     
     scores = predict(new_name)
 
-    list_scores = "<h4>Results</h4>"
+    list_scores = "<b>RESULTS</b><br>"
     top_predict = ""
     for res in scores:
 
-        if res['score'] >= 80:
+        if res['score'] >= (90/100):
             top_predict = res['label']
 
         list_scores += res['label']+" = "+str(res['score'])+"<br>"
 
     if len(top_predict) > 0 :
-        top_predict = "INI ADALAH GAMBAR BUNGA"+top_predict
+        top_predict = "INI ADALAH GAMBAR BUNGA "+top_predict.upper()
     else:
         top_predict = "INI BUKAN GAMBAR BUNGA"
 
-    return "<p><img src='/static/{}' width='200px'></p><p><h2> {} </h2></p><p>{}</p>".format(new_name,top_predict,list_scores)    
+    return "<br><br><center><p><img src='/static/{}' width='200px'></p><p><h2> {} </h2></p><p>{}</p>".format(new_name,top_predict,list_scores)    
 
 
 @route('/static/<filename>')
